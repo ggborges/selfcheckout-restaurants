@@ -41,7 +41,7 @@ model MenuCategory {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  restaurant Restaurant @relation(fields: [restaurantId], references: [id]) // foreing key to Restaurant
+  restaurant Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade) // foreing key to Restaurant
 }
 
 model Product {
@@ -60,8 +60,8 @@ model Product {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  menuCategory MenuCategory @relation(fields: [menuCategoryId], references: [id]) // foreing key to MenuCategory
-  restaurant   Restaurant   @relation(fields: [restaurantId], references: [id]) // foreing key to Restaurant
+  menuCategory MenuCategory @relation(fields: [menuCategoryId], references: [id], onDelete: Cascade) // foreing key to MenuCategory
+  restaurant   Restaurant   @relation(fields: [restaurantId], references: [id], onDelete: Cascade) // foreing key to Restaurant
 }
 
 model Order {
@@ -77,7 +77,7 @@ model Order {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  restaurant     Restaurant    @relation(fields: [restaurantId], references: [id]) // foreing key to Restaurant
+  restaurant     Restaurant    @relation(fields: [restaurantId], references: [id], onDelete: Cascade) // foreing key to Restaurant
   MenuCategory   MenuCategory? @relation(fields: [menuCategoryId], references: [id])
   menuCategoryId String?
 }
@@ -92,8 +92,8 @@ model OrderProduct {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  product Product @relation(fields: [productId], references: [id]) // foreing key to Product
-  order   Order   @relation(fields: [orderId], references: [id]) // foreing key to Order
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade) // foreing key to Product
+  order   Order   @relation(fields: [orderId], references: [id], onDelete: Cascade) // foreing key to Order
 }
 
 enum OrderStatus {
