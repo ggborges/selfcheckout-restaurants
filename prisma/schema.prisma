@@ -89,6 +89,6 @@ enum OrderStatus {
 
 enum ConsumptionMethod {
   DELIVERY // delivery (enviar para entrega)
-  PICKUP // takeaway (pedir para retirada)
+  TAKEAWAY // takeaway (pedir para retirada)
   DINE_IN // comer no local
 }
