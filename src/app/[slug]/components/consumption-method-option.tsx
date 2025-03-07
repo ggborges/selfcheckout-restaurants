@@ -22,7 +22,11 @@ const ConsumptionMethodOption = ({
     <Card>
       <CardContent className="flex flex-col items-center gap-8 py-8">
         <Image src={imageUrl} width={78} height={80} alt={imageAlt} />
-        <Button variant="secondary" className="rounded-full">
+        <Button variant="secondary" className="rounded-full" asChild>
+          {/* 
+          Link to the menu page with the selected consumption method 
+          Add the query parameter "consumptionMethod" with the selected consumption method 
+          */}
           <Link href={`/${slug}/menu?consumptionMethod=${option}`}>
             {buttonText}
           </Link>
