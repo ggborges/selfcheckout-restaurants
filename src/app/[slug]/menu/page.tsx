@@ -24,7 +24,16 @@ const RestaurantMenuPage = async ({
   if (!isConsumptionMethodValid(consumptionMethod)) {
     return notFound();
   }
-  const restaurant = await db.restaurant.findUnique({ where: { slug } });
+  const restaurant = await db.restaurant.findUnique({
+    where: { slug },
+    // Include the menu categories
+    // JOIN the menu categories with the restaurant using the "menuCategories" relation
+    include: {
+      menuCategories: {
+        include: { products: true },
+      },
+    },
+  });
   {
     /* Verifying if restaurant exists */
   }
@@ -32,6 +41,7 @@ const RestaurantMenuPage = async ({
     return notFound();
   }
 
+  // Render the menu page with the restaurant data and the selected consumption method
   return (
     <div>
       <RestaurantHeader restaurant={restaurant} />
